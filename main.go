@@ -1,16 +1,34 @@
 package main
 
-import "fmt"
+import "log"
+
+type Player struct {
+	pseudo string
+	age    int
+	hp     int
+	mp     int
+	sexe   string
+	intel  int
+}
+
+func (p *Player) setAge(age int) {
+	p.age = age
+
+}
+
+var (
+	player = make(map[string]Player)
+)
 
 func main() {
-	fmt.Println("Hello world !")
+	//var joueur1 Player
+	joueur2 := Player{pseudo: "Bilal", age: 15, hp: 10, mp: 10, sexe: "m", intel: 12}
+	player["saryon"] = joueur2
+	log.Printf("%#v", joueur2)
 
-	somme := Ajouter(3, 4)
-	fmt.Printf("La somme de 3 et 4 est : %v\n", somme)
-
-	produit := multiplication(3, 4)
-	fmt.Printf("La multiplication de 3 et 4 est : %v\n", produit)
-
-	quotient := division(12, 4)
-	fmt.Printf("La division de 12 par 4 est : %v\n", quotient)
+	log.Printf("L'age de %v : %v", joueur2.pseudo, joueur2.age)
+	joueur2.age = 16
+	log.Printf("L'age de %v : %v", joueur2.pseudo, joueur2.age)
+	joueur2.setAge(17)
+	log.Printf("L'age de %v : %v", joueur2.pseudo, joueur2.age)
 }
