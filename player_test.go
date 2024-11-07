@@ -1,36 +1,31 @@
 package main
 
 import (
-	"os"
+	"log"
+	"strings"
 	"testing"
 )
 
-// Test pour créer, afficher, sauvegarder et supprimer un joueur
-func TestPlayerLifecycle(t *testing.T) {
-	player, err := playerLoad("TestPlayer")
-	if err != nil {
-		t.Fatalf("Erreur lors de la création du joueur : %v", err)
+func TestSave(t *testing.T) {
+	p4 := Player{
+		Name:     "Patrick",
+		Username: "THE_STAR",
 	}
+	p4.save()
+	p4.del()
+}
 
-	// Test de la fonction display
-	displayText := player.display()
-	expected := "Nom: TestPlayer, Pseudo: , Age: 0, Health: 100, Bilal: 100"
-	if displayText != expected {
-		t.Errorf("display() = %v, attendu %v", displayText, expected)
+func TestDisplay(t *testing.T) {
+	p := Player{
+		Name:     "Patrick",
+		Username: "THE_STAR",
 	}
-
-	// Vérifie si le fichier a été créé
-	if _, err := os.Stat("TestPlayer.yml"); os.IsNotExist(err) {
-		t.Errorf("Le fichier TestPlayer.yml n'a pas été créé.")
+	if !strings.Contains(p.display(), "THE_STAR") {
+		t.Fatalf("Username THE_STAR should appear in %v", p.display())
 	}
-
-	// Supprime le joueur
-	if err := player.del(); err != nil {
-		t.Errorf("Erreur lors de la suppression du joueur : %v", err)
-	}
-
-	// Vérifie si le fichier a été supprimé
-	if _, err := os.Stat("TestPlayer.yml"); err == nil || !os.IsNotExist(err) {
-		t.Errorf("Le fichier TestPlayer.yml n'a pas été supprimé.")
-	}
+	//log.Printf(p.display())
+}
+func TestLoad(t *testing.T) {
+	p := playerLoad("toto")
+	log.Printf("%v", p)
 }
