@@ -13,7 +13,7 @@ type Player struct {
 	Pseudo string `yaml:"pseudo"`
 	Age    int    `yaml:"age"`
 	Health int    `yaml:"health"`
-	Mana   int    `yaml:"mana"`
+	Bilal  int    `yaml:"bilal"`
 }
 
 // Map pour stocker les joueurs indexés par leur nom
@@ -36,7 +36,7 @@ func (p *Player) del() error {
 
 // Méthode pour afficher les informations du joueur
 func (p *Player) display() string {
-	return fmt.Sprintf("Nom: %s, Pseudo: %s, Age: %d, Health: %d, Mana: %d", p.Nom, p.Pseudo, p.Age, p.Health, p.Mana)
+	return fmt.Sprintf("Nom: %s, Pseudo: %s, Age: %d, Health: %d, Bilal: %d", p.Nom, p.Pseudo, p.Age, p.Health, p.Bilal)
 }
 
 // Fonction pour charger un joueur
@@ -65,7 +65,7 @@ func playerLoad(name string) (*Player, error) {
 		Pseudo: pseudo,
 		Age:    0,
 		Health: 100,
-		Mana:   100,
+		Bilal:  100,
 	}
 	players[name] = player
 	return player, player.save()

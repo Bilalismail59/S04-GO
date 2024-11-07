@@ -14,7 +14,7 @@ func TestPlayerLifecycle(t *testing.T) {
 
 	// Test de la fonction display
 	displayText := player.display()
-	expected := "Nom: TestPlayer, Pseudo: , Age: 0, Health: 100, Mana: 100"
+	expected := "Nom: TestPlayer, Pseudo: , Age: 0, Health: 100, Bilal: 100"
 	if displayText != expected {
 		t.Errorf("display() = %v, attendu %v", displayText, expected)
 	}
